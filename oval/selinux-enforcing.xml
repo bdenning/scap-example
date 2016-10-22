@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<oval_definitions xmlns="http://oval.mitre.org/XMLSchema/oval-definitions-5"
+		  xmlns:lin-def="http://oval.mitre.org/XMLSchema/oval-definitions-5#linux"
+		  xmlns:oval="http://oval.mitre.org/XMLSchema/oval-common-5"
+		  xmlns:ind-def="http://oval.mitre.org/XMLSchema/oval-definitions-5#independent"
+		  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+
+  <generator>
+    <oval:product_name>emacs</oval:product_name>
+    <oval:schema_version>5.10.1</oval:schema_version>
+    <oval:timestamp>2012-11-22T15:00:00+01:00</oval:timestamp>
+  </generator>
+
+  <definitions>
+    <definition  class="compliance" id="oval:io.github.bdenning.example:def:1" version="1">
+      <metadata>
+	<title>SELinux Enforcing</title>
+	<affected family="unix">
+          <platform>cpe:/o:fedoraproject:fedora:24</platform>
+	</affected>
+	<description>The SELinux state should be enforcing the local policy.</description>
+      </metadata>
+      <criteria operator="AND">
+	<criterion comment="enforce is disabled" test_ref="oval:io.github.bdenning.example:tst:1" />
+      </criteria>
+    </definition>
+  </definitions>
+
+  <tests>
+    <ind-def:textfilecontent54_test check="all" check_existence="all_exist" comment="/selinux/enforce is 1"
+				    id="oval:io.github.bdenning.example:tst:1" version="1">
+      <ind-def:object object_ref="oval:io.github.bdenning.example:obj:1" />
+      <ind-def:state state_ref="oval:io.github.bdenning.example:ste:1" />
+    </ind-def:textfilecontent54_test>
+  </tests>
+
+  <objects>
+    <ind-def:textfilecontent54_object id="oval:io.github.bdenning.example:obj:1" version="1">
+      <ind-def:filepath>/etc/selinux/config</ind-def:filepath>
+      <ind-def:pattern operation="pattern match">^[\s]*SELINUX[\s]*=[\s]*(.*)[\s]*$</ind-def:pattern>
+      <ind-def:instance datatype="int">1</ind-def:instance>
+    </ind-def:textfilecontent54_object>
+  </objects>
+
+  <states>
+    <ind-def:textfilecontent54_state id="oval:io.github.bdenning.example:ste:1" version="1">
+    </ind-def:textfilecontent54_state>
+  </states>
+
+</oval_definitions>
