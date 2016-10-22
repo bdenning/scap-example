@@ -8,7 +8,7 @@
 
   <status date="2016-10-22">draft</status>
   
-  <title>ISM Linux Server Hardening Benchmark</title>
+  <title>Example Fedora Linux Hardening Benchmark</title>
   <description>
     This security baseline has been developed for educational purposes.
   </description>
@@ -40,6 +40,13 @@
         <fixtext fixref="xccdf_io.github.denning_fix_selinux-enabled">
           # setenforce 1
         </fixtext>
+	<!-- The follow has not been tested. Ansible support was only recently added to openscap -->
+	<fix id="xccdf_io.github.denning_fix_selinux-enabled"
+	     system="urn:xccdf:fix:script:ansible"
+	     platform="cpe:/o:fedoraproject:fedora:24" complexity="low" disruption="medium" reboot="false">
+	  - name: Set SELinux to Enforcing
+	    command: setenforce 1
+	</fix>
 	<check system="http://open-scap.org/page/SCE">
 	  <check-import import-name="stdout"/>
 	  <check-content-ref href="bin/fedora-sce_selinux-enforcing.sh"/>

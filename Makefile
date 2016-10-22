@@ -1,9 +1,9 @@
 all:	validate resolve html example
 
 example:
-	oscap ds sds-compose resolved-security-baseline.xml security-baseline-ds.xml
+	oscap ds sds-compose security-baseline.xml security-baseline-ds.xml
 
-html:
+html:	resolve
 	oscap xccdf generate guide --profile xccdf_io.github.bdenning_profile_default resolved-security-baseline.xml > security-baseline.html
 
 validate:
