@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Benchmark xmlns="http://checklists.nist.gov/xccdf/1.2"
+           xmlns:h="http://www.w3.org/1999/xhtml"
+           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           id="xccdf_io.github.bdenning_benchmark_example-20161022-1"
+           xsi:schemaLocation="http://checklists.nist.gov/xccdf/1.2 xccdf-1.2.xsd"
+           resolved="0">
+
+  <status date="2016-10-22">draft</status>
+  
+  <title>ISM Linux Server Hardening Benchmark</title>
+  <description>
+    This security baseline has been developed for educational purposes.
+  </description>
+
+  <platform idref="cpe:/o:fedoraproject:fedora:24" />
+  <version>20161022.1</version>
+  <model system="urn:xccdf:scoring:default" />
+  <model system="urn:xccdf:scoring:flat" />
+  <model system="urn:xccdf:scoring:flat-unweighted" />
+  
+  <Profile id="xccdf_io.github.bdenning_profile_default">
+    <title>Example Profile</title>
+    <description>
+    </description>
+    <select idref="xccdf_io.github.bdenning_rule_selinux-enabled" selected="true"/>
+  </Profile>
+
+  <Group id="xccdf_io.github.bdenning_group_selinux">
+    <title>SELinux</title>
+    <description>
+    </description>
+
+    <Group id="xccdf_io.github.bdenning_group_selinux-enabled">
+      <title>Enable SELinux</title>
+      <description>
+      </description>
+      <Rule id="xccdf_io.github.bdenning_rule_selinux-enabled" selected="true" severity="medium" weight="5">
+        <title>SELinux must be set to Enforcing</title>
+        <fixtext fixref="xccdf_io.github.denning_fix_selinux-enabled">
+          # setenforce 1
+        </fixtext>
+	<check system="http://open-scap.org/page/SCE">
+	  <check-import import-name="stdout"/>
+	  <check-content-ref href="bin/fedora-sce_selinux-enforcing.sh"/>
+	</check>
+      </Rule>
+      
+    </Group>
+  </Group>
+</Benchmark>
