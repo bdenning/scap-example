@@ -16,7 +16,7 @@
       <metadata>
 	<title>SELinux Enforcing</title>
 	<affected family="unix">
-          <platform>cpe:/o:fedoraproject:fedora:24</platform>
+          <platform>Fedora 24</platform>
 	</affected>
 	<description>The SELinux state should be enforcing the local policy.</description>
       </metadata>
@@ -44,6 +44,7 @@
 
   <states>
     <ind-def:textfilecontent54_state id="oval:io.github.bdenning.example:ste:1" version="1">
+      <ind-def:text datatype="string" operation="pattern match" entity_check="all">^[\s]*SELINUX[\s]*=[\s]*(.*)[\s]*$</ind-def:text>
     </ind-def:textfilecontent54_state>
   </states>
 
