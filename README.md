@@ -2,7 +2,7 @@
 Some SCAP content that I've created with the intention of learning the SCAP XML.
 
 
-```
+```bash
 # Install OpenSCAP and build the datastream
 dnf install openscap-scanner
 make
