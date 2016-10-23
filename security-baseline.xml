@@ -26,6 +26,7 @@
     <select idref="xccdf_io.github.bdenning_rule_selinux-enabled" selected="true"/>
   </Profile>
 
+  <!-- SELinux checks -->
   <Group id="xccdf_io.github.bdenning_group_selinux">
     <title>SELinux</title>
     <description>
@@ -37,9 +38,11 @@
       </description>
       <Rule id="xccdf_io.github.bdenning_rule_selinux-enabled" selected="true" severity="medium" weight="5">
         <title>SELinux must be set to Enforcing</title>
+
         <fixtext fixref="xccdf_io.github.denning_fix_selinux-enabled">
           setenforce 1
         </fixtext>
+
 	<!-- The follow has not been tested. Ansible support was only recently added to openscap -->
 	<fix id="xccdf_io.github.denning_fix_selinux-enabled"
 	     system="urn:xccdf:fix:script:ansible"
@@ -48,19 +51,20 @@
 	    command: setenforce 1
 	</fix>
 
-	<!--
+	<!-- Example of how to test using a bash script (require openscap-engine-sce to be installed)
 	<check system="http://open-scap.org/page/SCE">
           <check-import import-name="stdout"/>
           <check-content-ref href="bin/fedora-sce_selinux-enforcing.sh"/>
 	</check>
 	-->
 
-	<!-- Use OVAL to perform the checks -->
+	<!-- Check SELinux is enabled in /etc/selinux/config -->
 	<check system="http://oval.mitre.org/XMLSchema/oval-definitions-5">
-	  <check-content-ref name="oval:io.github.bdenning.example:tst:1" href="oval/selinux-enforcing.xml" />
+	  <check-content-ref name="oval:io.github.bdenning.example:def:1" href="oval/selinux-enforcing.xml" />
 	</check>
 	
       </Rule>
     </Group>
+
   </Group>
 </Benchmark>

@@ -20,8 +20,8 @@
 	</affected>
 	<description>The SELinux state should be enforcing the local policy.</description>
       </metadata>
-      <criteria operator="AND">
-	<criterion comment="enforce is disabled" test_ref="oval:io.github.bdenning.example:tst:1" />
+      <criteria>
+	<criterion comment="SELinux is Enforcing" test_ref="oval:io.github.bdenning.example:tst:1" />
       </criteria>
     </definition>
   </definitions>
@@ -37,14 +37,14 @@
   <objects>
     <ind-def:textfilecontent54_object id="oval:io.github.bdenning.example:obj:1" version="1">
       <ind-def:filepath>/etc/selinux/config</ind-def:filepath>
-      <ind-def:pattern operation="pattern match">^[\s]*SELINUX[\s]*=[\s]*(.*)[\s]*$</ind-def:pattern>
+      <ind-def:pattern operation="pattern match">^SELINUX=(.+)$</ind-def:pattern>
       <ind-def:instance datatype="int">1</ind-def:instance>
     </ind-def:textfilecontent54_object>
   </objects>
 
   <states>
     <ind-def:textfilecontent54_state id="oval:io.github.bdenning.example:ste:1" version="1">
-      <ind-def:text datatype="string" operation="pattern match" entity_check="all">^[\s]*SELINUX[\s]*=[\s]*(.*)[\s]*$</ind-def:text>
+      <ind-def:text datatype="string" operation="pattern match" entity_check="all">^SELINUX=enforcing$</ind-def:text>
     </ind-def:textfilecontent54_state>
   </states>
 
