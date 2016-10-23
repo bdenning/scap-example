@@ -1,14 +1,18 @@
 all:	html datastream
 
-datastream:
-	oscap ds sds-compose security-baseline.xml security-baseline-ds.xml
+datastream:	resolve
+	oscap ds sds-compose security-baseline-resolved.xml security-baseline-ds.xml
 
-html:	
-	oscap xccdf generate guide --profile xccdf_io.github.bdenning_profile_default security-baseline.xml > security-baseline.html
+html:	resolve
+	oscap xccdf generate guide --profile xccdf_io.github.bdenning_profile_default security-baseline-resolved.xml > security-baseline.html
+
+resolve:
+	oscap xccdf resolve -o security-baseline-resolved.xml security-baseline.xml
 
 clean:
 	rm -frv *~
 	rm -f security-baseline-ds.xml
+	rm -f security-baseline-resolved.xml
 	rm -f security-baseline.html
 
 .phony: clean
