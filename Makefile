@@ -1,5 +1,9 @@
 all: build resolve html datastream
 
+validate: datastream
+	oscap xccdf validate example-xccdf-ds.xml
+	oscap oval validate example-xccdf-ds.xml
+
 datastream: resolve
 	oscap ds sds-compose example-xccdf.xml example-xccdf-ds.xml
 
