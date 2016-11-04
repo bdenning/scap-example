@@ -19,15 +19,8 @@
   <model system="urn:xccdf:scoring:flat" />
   <model system="urn:xccdf:scoring:flat-unweighted" />
 
-  {% include "profiles/default.xml" %}
+  <Profile id="xccdf_io.github.bdenning_profile_default">{% include "profiles/default.xml" %}</Profile>
   
-  <!-- SELinux checks -->
-  <Group id="xccdf_io.github.bdenning_group_selinux">
-    <title>SELinux</title>
-    <description>
-    </description>
-
-    {% include "xccdf/selinux.xml" %}
-  </Group>
+  <Group id="xccdf_io.github.bdenning_group_selinux">{% include "xccdf/selinux.xml" %}</Group>
 
 </Benchmark>

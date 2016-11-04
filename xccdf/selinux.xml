@@ -1,3 +1,7 @@
+<title>SELinux</title>
+<description>
+</description>
+
 <Group id="xccdf_io.github.bdenning_group_selinux-enabled">
   <title>Enable SELinux</title>
   <description>
