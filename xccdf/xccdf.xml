@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Benchmark xmlns="http://checklists.nist.gov/xccdf/1.2"
+           xmlns:h="http://www.w3.org/1999/xhtml"
+           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           id="xccdf_io.github.bdenning_benchmark_example-20161022-1"
+           xsi:schemaLocation="http://checklists.nist.gov/xccdf/1.2 xccdf-1.2.xsd"
+           resolved="0">
+
+  <status date="2016-10-22">draft</status>
+  
+  <title>Example Fedora Linux Hardening Benchmark</title>
+  <description>
+    This security baseline has been developed for educational purposes.
+  </description>
+
+  <platform idref="cpe:/o:fedoraproject:fedora:24" />
+  <version>20161022.1</version>
+  <model system="urn:xccdf:scoring:default" />
+  <model system="urn:xccdf:scoring:flat" />
+  <model system="urn:xccdf:scoring:flat-unweighted" />
+
+  {% include "profiles/default.xml" %}
+  
+  <!-- SELinux checks -->
+  <Group id="xccdf_io.github.bdenning_group_selinux">
+    <title>SELinux</title>
+    <description>
+    </description>
+
+    {% include "xccdf/selinux.xml" %}
+  </Group>
+
+</Benchmark>

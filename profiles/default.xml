@@ -1,0 +1,6 @@
+<Profile id="xccdf_io.github.bdenning_profile_default">
+  <title>Example Profile</title>
+  <description>
+  </description>
+  <select idref="xccdf_io.github.bdenning_group_selinux-enabled" selected="true"/>
+</Profile>

@@ -1,0 +1,72 @@
+<Group id="xccdf_io.github.bdenning_group_selinux-enabled">
+  <title>Enable SELinux</title>
+  <description>
+  </description>
+  
+  <!-- Check SELinux is not disabled in grub.conf -->
+  <!-- TODO: Finish adding this check. The OVAL should be done.
+       
+       <Rule id="xccdf_io.github.bdenning_rule_selinux-enforcing" selected="true" severity="medium" weight="5">
+       <title>SELinux must be enforcing</title>
+       
+       <fixtext fixref="xccdf_io.github.denning_fix_selinux-enforcing">
+       setenforce 1
+       </fixtext>
+       
+       <fix id="xccdf_io.github.denning_fix_selinux-enforcing"
+       system="urn:xccdf:fix:script:ansible"
+       platform="cpe:/o:fedoraproject:fedora:24" complexity="low" disruption="medium" reboot="false">
+       - name: Set SELinux to Enforcing
+       command: setenforce 1
+       </fix>
+       
+       <check system="http://oval.mitre.org/XMLSchema/oval-definitions-5">
+       <check-content-ref name="oval:io.github.bdenning.example:def:2" href="oval/selinux-enforcing.xml" />
+       </check>
+       
+       </Rule>
+  -->
+  
+  <!-- Check SELinux is enabled in /etc/selinux/config -->
+  <Rule id="xccdf_io.github.bdenning_rule_selinux-config-enforcing" selected="true" severity="medium" weight="5">
+    <title>SELinux must configured to enforce using /etc/selinux/conf</title>
+    
+    <fixtext fixref="xccdf_io.github.denning_fix_selinux-config-enforcing">
+      setenforce 1
+    </fixtext>
+    
+    <!-- TODO
+	 <fix id="xccdf_io.github.denning_fix_selinux-enabled"
+	      system="urn:xccdf:fix:script:ansible"
+	      platform="cpe:/o:fedoraproject:fedora:24" complexity="low" disruption="medium" reboot="true">
+	   
+	 </fix>
+	 -->
+	 
+	 <check system="http://oval.mitre.org/XMLSchema/oval-definitions-5">
+	   <check-content-ref name="oval:io.github.bdenning.example:def:1" href="oval/selinux-config-enforcing.xml" />
+	 </check>
+	 
+  </Rule>
+  
+  <!-- Check SELinux is enforcing -->
+  <Rule id="xccdf_io.github.bdenning_rule_selinux-enforcing" selected="true" severity="medium" weight="5">
+    <title>SELinux must be enforcing</title>
+    
+    <fixtext fixref="xccdf_io.github.denning_fix_selinux-enforcing">
+      sudo setenforce 1
+    </fixtext>
+    
+    <fix id="xccdf_io.github.denning_fix_selinux-enforcing"
+	 system="urn:xccdf:fix:script:ansible"
+	 platform="cpe:/o:fedoraproject:fedora:24" complexity="low" disruption="medium" reboot="false">
+      - name: Set SELinux to Enforcing
+        command: setenforce 1
+    </fix>
+    
+    <check system="http://oval.mitre.org/XMLSchema/oval-definitions-5">
+      <check-content-ref name="oval:io.github.bdenning.example:def:2" href="oval/selinux-enforcing.xml" />
+    </check>
+    
+  </Rule>
+</Group>
