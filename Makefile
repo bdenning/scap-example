@@ -1,4 +1,4 @@
-all: html datastream
+all: build resolve html datastream
 
 datastream: resolve
 	oscap ds sds-compose example-xccdf.xml example-xccdf-ds.xml
@@ -9,12 +9,12 @@ html: resolve
 resolve: build
 	oscap xccdf resolve -o example-xccdf.xml example-xccdf.xml
 
-build:	build
-	mkdir build
+build:
 	python build.py
 
 clean:
 	rm -frv *~
+	rm -f example-xccdf.xml
 	rm -f example-xccdf-ds.xml
 	rm -f example-xccdf.html
 

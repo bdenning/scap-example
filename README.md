@@ -8,10 +8,10 @@ dnf install openscap-scanner
 make
 
 # Read the doco
-firefox security-baseline.html
+firefox example-xccdf.html
 
 # Evaluate compliance against the baseline
-oscap xccdf eval security-baseline-ds.xml
+oscap xccdf eval example-xccdf-ds.xml
 
 # Tidy up
 make clean
