@@ -8,7 +8,7 @@ from jinja2 import Environment, FileSystemLoader
 
 # Render the main XML file in memory
 env = Environment(loader=FileSystemLoader("./"))
-t = env.get_template("xccdf/xccdf.xml")
+t = env.get_template("example.xml")
 xccdf = t.render()
 
 with open("example-xccdf.xml", "w") as f:
