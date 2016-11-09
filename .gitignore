@@ -1,5 +1,7 @@
 *\#
 *\~
 *.html
+*.yml
+*.retry
 example-xccdf.xml
 example-xccdf-ds.xml
