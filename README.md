@@ -17,7 +17,7 @@ oscap xccdf eval example-xccdf-ds.xml
 make fix
 
 # Remediate non-compliant hosts
-ansible-playbook -c local -i localhost, playbook.yml
+ansible-playbook -c local -i localhost, example-playbook.yml
 
 # Tidy up
 make clean

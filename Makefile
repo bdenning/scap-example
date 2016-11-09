@@ -9,7 +9,7 @@ datastream: resolve
 
 fix: datastream
 	oscap xccdf generate fix --profile xccdf_io.github.bdenning_profile_default \
-	--template urn:xccdf:fix:script:ansible --output playbook.yml example-xccdf-ds.xml
+	--template urn:xccdf:fix:script:ansible --output example-playbook.yml example-xccdf-ds.xml
 
 html: resolve
 	oscap xccdf generate guide --profile xccdf_io.github.bdenning_profile_default example-xccdf.xml > example-xccdf.html
@@ -25,5 +25,6 @@ clean:
 	rm -f example-xccdf.xml
 	rm -f example-xccdf-ds.xml
 	rm -f example-xccdf.html
+	rm -f example-playbook.yml
 
 .phony: clean
