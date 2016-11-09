@@ -14,6 +14,12 @@
   </description>
 
   <platform idref="cpe:/o:fedoraproject:fedora:24" />
+  <platform idref="cpe:/o:fedoraproject:fedora:25" />
+  <platform idref="cpe:/o:centos:centos:6" />
+  <platform idref="cpe:/o:centos:centos:7" />
+  <platform idref="cpe:/o:redhat:enterprise_linux:6" />
+  <platform idref="cpe:/o:redhat:enterprise_linux:7" />
+
   <version>20161022.1</version>
   <model system="urn:xccdf:scoring:default" />
   <model system="urn:xccdf:scoring:flat" />
