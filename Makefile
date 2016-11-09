@@ -22,6 +22,7 @@ build:
 
 clean:
 	rm -frv *~
+	rm -frv *.retry
 	rm -f example-xccdf.xml
 	rm -f example-xccdf-ds.xml
 	rm -f example-xccdf.html
