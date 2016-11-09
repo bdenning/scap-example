@@ -4,7 +4,7 @@ Some SCAP content that I've created with the intention of learning the SCAP XML.
 
 ```bash
 # Install OpenSCAP and build the datastream
-dnf install openscap-scanner
+yum install -y openscap-scanner python-jinja2
 make
 
 # Read the doco
@@ -12,6 +12,12 @@ firefox example-xccdf.html
 
 # Evaluate compliance against the baseline
 oscap xccdf eval example-xccdf-ds.xml
+
+# Create an Ansible playbook to remediate non-compliant settings
+make fix
+
+# Remediate non-compliant hosts
+ansible-playbook -c local -i localhost, playbook.yml
 
 # Tidy up
 make clean

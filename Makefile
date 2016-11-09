@@ -7,6 +7,10 @@ validate: datastream
 datastream: resolve
 	oscap ds sds-compose example-xccdf.xml example-xccdf-ds.xml
 
+fix: datastream
+	oscap xccdf generate fix --profile xccdf_io.github.bdenning_profile_default \
+	--template urn:xccdf:fix:script:ansible --output playbook.yml example-xccdf-ds.xml
+
 html: resolve
 	oscap xccdf generate guide --profile xccdf_io.github.bdenning_profile_default example-xccdf.xml > example-xccdf.html
 
