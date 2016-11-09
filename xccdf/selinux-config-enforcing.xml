@@ -1,0 +1,16 @@
+<title>SELinux must configured to enforce using /etc/selinux/conf</title>
+
+<fixtext fixref="xccdf_io.github.denning_fix_selinux-config-enforcing">
+  sudo sed -i.bak -e 's/^SELINUX=disabled/SELINUX=enforcing/' /etc/selinux/config
+</fixtext>
+
+<fix id="xccdf_io.github.denning_fix_selinux-config-enforcing"
+	 system="urn:xccdf:fix:script:ansible"
+	 complexity="low" disruption="medium" reboot="true">
+  - name: Set SELinux's configuration to Enforcing
+    lineinfile: dest=/etc/selinux/config regexp=^SELINUX= line=SELINUX=enforcing
+</fix>
+	 
+<check system="http://oval.mitre.org/XMLSchema/oval-definitions-5">
+  <check-content-ref name="oval:io.github.bdenning.example:def:1" href="oval/selinux-config-enforcing.xml" />
+</check>

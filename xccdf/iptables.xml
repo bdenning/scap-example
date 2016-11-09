@@ -1,0 +1,5 @@
+<title>Firewall</title>
+<description>
+</description>
+
+<Rule id="xccdf_io.github.bdenning_rule_iptables-service-enabled" selected="true">{% include "xccdf/iptables-service-enabled.xml" %}</Rule>

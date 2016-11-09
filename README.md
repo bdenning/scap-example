@@ -4,7 +4,7 @@ Some SCAP content that I've created with the intention of learning the SCAP XML.
 
 ```bash
 # Install OpenSCAP and build the datastream
-yum install -y openscap-scanner python-jinja2
+yum install -y openscap-scanner openscap-engine-sce python-jinja2
 make
 
 # Read the doco

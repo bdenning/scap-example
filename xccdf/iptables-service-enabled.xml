@@ -1,0 +1,29 @@
+<title>iptables must be configured to start at boot</title>
+
+<fixtext fixref="xccdf_io.github.denning_fix_iptables-service-enabled">
+  <h:p><h:i># RHEL6 and CentOS6</h:i><h:br/>
+  <h:code>sudo chkconfig iptables on</h:code></h:p>
+
+  <h:p><h:i># RHEL7, CentOS7 and Fedora</h:i><h:br/>
+  <h:code>sudo yum -y install iptables-services</h:code><h:br/>
+  <h:code>sudo systemctl disable firewalld</h:code><h:br/>
+  <h:code>sudo systemctl enable iptables</h:code></h:p>
+</fixtext>
+
+<fix id="xccdf_io.github.denning_fix_iptables-service-enabled"
+	 system="urn:xccdf:fix:script:ansible"
+	 complexity="low" disruption="medium" reboot="true">
+  - name: Disable the firewalld service
+    service: name=firewalld enabled=false
+
+  - name: install iptables
+    yum: name=iptables-services state=present
+  
+  - name: Configure iptables to start at boot
+    service: name=iptables enabled=true
+</fix>
+	 
+<check system="http://open-scap.org/page/SCE">
+  <check-import import-name="stdout"/>
+  <check-content-ref href="bin/check-iptables-service-enabled.sh"/>
+</check>

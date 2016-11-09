@@ -28,5 +28,6 @@
   <Profile id="xccdf_io.github.bdenning_profile_default">{% include "profiles/default.xml" %}</Profile>
   
   <Group id="xccdf_io.github.bdenning_group_selinux">{% include "xccdf/selinux.xml" %}</Group>
+  <Group id="xccdf_io.github.bdenning_group_firewall">{% include "xccdf/iptables.xml" %}</Group>
 
 </Benchmark>
