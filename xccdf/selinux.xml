@@ -36,20 +36,19 @@
     <title>SELinux must configured to enforce using /etc/selinux/conf</title>
     
     <fixtext fixref="xccdf_io.github.denning_fix_selinux-config-enforcing">
-      setenforce 1
+      sudo sed -i.bak -e 's/^SELINUX=disabled/SELINUX=enforcing/' /etc/selinux/config
     </fixtext>
     
-    <!-- TODO
-	 <fix id="xccdf_io.github.denning_fix_selinux-enabled"
-	      system="urn:xccdf:fix:script:ansible"
-	      platform="cpe:/o:fedoraproject:fedora:24" complexity="low" disruption="medium" reboot="true">
-	   
-	 </fix>
-	 -->
+    <fix id="xccdf_io.github.denning_fix_selinux-config-enforcing"
+	 system="urn:xccdf:fix:script:ansible"
+	 complexity="low" disruption="medium" reboot="false">
+      - name: Set SELinux's configuration to Enforcing
+        lineinfile: dest=/etc/selinux/config regexp=^SELINUX= line=SELINUX=enforcing
+    </fix>
 	 
-	 <check system="http://oval.mitre.org/XMLSchema/oval-definitions-5">
-	   <check-content-ref name="oval:io.github.bdenning.example:def:1" href="oval/selinux-config-enforcing.xml" />
-	 </check>
+    <check system="http://oval.mitre.org/XMLSchema/oval-definitions-5">
+      <check-content-ref name="oval:io.github.bdenning.example:def:1" href="oval/selinux-config-enforcing.xml" />
+    </check>
 	 
   </Rule>
   
@@ -63,7 +62,7 @@
     
     <fix id="xccdf_io.github.denning_fix_selinux-enforcing"
 	 system="urn:xccdf:fix:script:ansible"
-	 platform="cpe:/o:fedoraproject:fedora:24" complexity="low" disruption="medium" reboot="false">
+	 complexity="low" disruption="medium" reboot="false">
       - name: Set SELinux to Enforcing
         command: setenforce 1
     </fix>
